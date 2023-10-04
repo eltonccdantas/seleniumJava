@@ -55,18 +55,17 @@ public class AddNewCustomer {
 
         Assert.assertEquals(true, driver.findElement(By.xpath("//p[contains(text(),\"Add New Customer\")]\t")).isDisplayed());
 
-            if(driver.findElements(By.xpath("//p[contains(text(),\"Add New Customer\")]\t")).size() != 0){
-                System.out.println("''Add New Customer'' is Present");
-            }else{
-                System.out.println("Element is not present");
-            }
-
+//            if(driver.findElements(By.xpath("//p[contains(text(),\"Add New Customer\")]\t")).size() != 0){
+//                System.out.println("''Add New Customer'' is Present");
+//            }else{
+//                System.out.println("Element is not present");
+//            }
 
         //driver.findElement(By.name("name")).click();
         driver.findElement(By.name("name")).sendKeys("useraaaa");
 
-        //driver.findElement(By.id("dob")).click();
-        driver.findElement(By.id("dob")).sendKeys("2022-10-28");
+        //driver.findElement(By.id("dob")).click();#################################################################
+        driver.findElement(By.id("dob")).sendKeys(Keys.UP);
 
         //driver.findElement(By.name("addr")).click();
         driver.findElement(By.name("addr")).sendKeys("asdfasdf");
@@ -82,7 +81,7 @@ public class AddNewCustomer {
 
         driver.findElement(By.name("telephoneno")).sendKeys("123456132");
 
-        driver.findElement(By.name("emailid")).sendKeys("user888123@liferay.com");
+        driver.findElement(By.name("emailid")).sendKeys("useralf@liferay.com");
 
         driver.findElement(By.name("password")).sendKeys("1234563123");
 
@@ -90,6 +89,8 @@ public class AddNewCustomer {
 
         driver.findElement(By.name("sub")).click();
         //driver.findElement(By.cssSelector("#customer tr:nth-child(1) > td")).click();
+
+        Assert.assertEquals(true, driver.findElement(By.xpath("//p[@class='heading3'][contains(text(),\"Customer Registered Successfully!!!\")]\t")).isDisplayed());
     }
 
     @Test
@@ -97,11 +98,45 @@ public class AddNewCustomer {
 
         driver.findElement(By.linkText("New Customer")).click();
 
-        //Assert "Customer name must not be blank"
+        //Assert customer name must not be blank.
         driver.findElement(By.name("name")).sendKeys(Keys.TAB);
         Assert.assertEquals(true, driver.findElement(By.xpath("//label[@id='message']")).isDisplayed());
 
-        //Assert Date Field must not be blank
+        //######### Gender shows no message, a bug?
+        driver.findElement(By.xpath("//input[@value='m']")).sendKeys(Keys.TAB);
+
+        //Assert date Field must not be blank.
+        Assert.assertEquals(true, driver.findElement(By.xpath("//label[@id='message24']")).isDisplayed());
+
+        //Assert address Field must not be blank.
+        driver.findElement(By.xpath("//textarea[@name='addr']")).sendKeys(Keys.TAB);
+        Assert.assertEquals(true, driver.findElement(By.xpath("//label[@id='message3']")).isDisplayed());
+
+        //Assert city Field must not be blank.
+        driver.findElement(By.xpath("//input[@name='city']")).sendKeys(Keys.TAB);
+        Assert.assertEquals(true, driver.findElement(By.xpath("//label[@id='message4']")).isDisplayed());
+
+        //Assert state must not be blank.
+        driver.findElement(By.xpath("//input[@name='state']")).sendKeys(Keys.TAB);
+        Assert.assertEquals(true, driver.findElement(By.xpath("//label[@id='message5']")).isDisplayed());
+
+        //Assert PIN Code must not be blank.
+        driver.findElement(By.xpath("//input[@name='pinno']")).sendKeys(Keys.TAB);
+        Assert.assertEquals(true, driver.findElement(By.xpath("//label[@id='message6']")).isDisplayed());
+
+        //Assert mobile no must not be blank.
+        driver.findElement(By.xpath("//input[@name='telephoneno']")).sendKeys(Keys.TAB);
+        Assert.assertEquals(true, driver.findElement(By.xpath("//label[@id='message7']")).isDisplayed());
+
+        //Assert email-ID must not be blank.
+        driver.findElement(By.xpath("//input[@name='emailid']")).sendKeys(Keys.TAB);
+        Assert.assertEquals(true, driver.findElement(By.xpath("//label[@id='message9']")).isDisplayed());
+
+
+        //Assert password must not be blank.
+        driver.findElement(By.xpath("//input[@name='password']")).sendKeys(Keys.TAB);
+        Assert.assertEquals(true, driver.findElement(By.xpath("//label[@id='message18']")).isDisplayed());
+
 
 
 
